@@ -16,19 +16,25 @@ function lengthOfSubstring(givenStr) {
 }
 
 function findTheLongest(finalResult) {
+	let arr = [];
 	
-	for (let i = 0; i <finalResult.length - 1; i++) {
-		for (let j = finalResult.length - 1; j >= i; j--) {
-			if (finalResult[j] < finalResult[j - 1]) {
-				let temp = finalResult[j];
-				finalResult[j] = finalResult[j - 1];
-				finalResult[j - 1] = temp;
+	for (let i = 0; i <finalResult.length; i++) {
+		arr[i] = finalResult[i].length;
+	}
+
+	for (let i = 0; i < arr.length; i++) {
+		for (let j = i+1; j < arr.length; j++) {
+			if (arr[i] > arr[j]) {
+				let temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
 			}
 		}
 	}
-	return finalResult;
+	return arr[arr.length - 1];
 }
 
-const givenStr = "123abbbcdr";
+const givenStr = "11123abbbcdr";
 let eo = lengthOfSubstring(givenStr);
-console.log(findTheLongest(eo)[0]);
+console.log("The given string is : ", givenStr);
+console.log("And the longest substring's digit is : ", findTheLongest(eo));

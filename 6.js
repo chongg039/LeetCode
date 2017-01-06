@@ -1,4 +1,5 @@
 /**
+ * 二维数组
  * @param {string} s
  * @param {number} numRows
  * @return {string}

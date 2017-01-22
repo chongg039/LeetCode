@@ -5,21 +5,22 @@ import (
 )
 
 func longestCommonPrefix(strs []string) string {
-	len := len(strs)
-	result := ""
+	length := len(strs)
+	var result string
 
-	const minSize int = 100000
-	const minIndex int = 0
+	var minSize int = 100000
+	var minIndex int = 0
 
 	switch {
-	case len == 0:
+	case length == 0:
 		return ""
-	case len == 1:
+	case length == 1:
 		result = strs[0]
 		return result
-	case len >= 2:
-		for i := 0; i < len; i++ {
+	case length >= 2:
+		for i := 0; i < length; i++ {
 			size := len(strs[i])
+			fmt.Println(size)
 			if size < minSize {
 				minSize = size
 				minIndex = i
@@ -30,7 +31,7 @@ func longestCommonPrefix(strs []string) string {
 			result = strs[minIndex][0:i]
 
 			j := 0
-			for ; j < len; j++ {
+			for ; j < length; j++ {
 				if j == minIndex {
 					continue
 				}
@@ -39,17 +40,19 @@ func longestCommonPrefix(strs []string) string {
 					break
 				}
 			}
-			if j == len {
+			if j == length {
 				return result
 			}
 		}
 		return result
+	default:
+		return "error!"
 	}
 
 }
 
 func main() {
-	strs := []string(asd, asdeg, asdefa, asdghbc)
+	strs := []string{"asd", "asdeg", "asdefa", "asdghbc"}
 	result := longestCommonPrefix(strs)
 	fmt.Println(result)
 }
